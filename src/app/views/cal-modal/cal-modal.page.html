@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Asignados del día</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let event of events">
+      <ion-item>
+        <ion-label>
+          {{event.nombre}}          
+        </ion-label>
+      <ion-badge  slot="end" color="success"> {{conversion(event.startTime)}} </ion-badge>
+      <ion-badge  slot="end" color="medium"> {{conversion(event.endTime)}} </ion-badge>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="delete(event.id_asignados)" color="danger"> <ion-icon md="md-trash" style="zoom:2.0;"></ion-icon></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>    
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="asignar()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

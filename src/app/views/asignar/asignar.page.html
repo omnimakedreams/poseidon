@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Asignar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-row *ngIf="mostrar">
+  <ion-col size="1">
+  </ion-col>
+  <ion-col size="10">
+  <ion-item>
+    <ion-label position="floating">Buscar</ion-label>
+    <ion-input (ionChange)="buscar($event.target.value)"></ion-input>
+  </ion-item>
+</ion-col>
+<ion-col size="1">
+</ion-col>
+</ion-row>
+
+<ion-row *ngIf="mostrar">
+  <ion-col size="1">
+  </ion-col>
+  <ion-col size="10">
+<ion-list>
+  <ion-item *ngFor="let found of founds" (click)="pasar(found.id_user)">    
+      <ion-label>
+        {{found.nombre}}          
+    </ion-label>
+  </ion-item>    
+</ion-list>
+</ion-col>
+<ion-col size="1">
+</ion-col>
+</ion-row>
+
+<ion-row *ngIf="!mostrar">
+  <ion-col size="1">
+  </ion-col>
+  <ion-col size="10">
+<ion-list>
+  <ion-item color="primary">    
+      <ion-label>
+        <h1>{{selected.nombre}}</h1>          
+    </ion-label>
+  </ion-item>    
+</ion-list>
+</ion-col>
+<ion-col size="1">
+</ion-col>
+</ion-row>
+
+<ion-row *ngIf="!mostrar">
+  <ion-col size="1">
+  </ion-col>
+  <ion-col size="10">
+    <ion-item >
+      <ion-label>Hora de Inicio</ion-label>
+      <ion-datetime (ionChange)="obtenHora($event.target.value, 1)" displayFormat="h:mm A"></ion-datetime>
+    </ion-item> 
+
+    <ion-item>
+      <ion-label>Hora de Cierre</ion-label>
+      <ion-datetime (ionChange)="obtenHora($event.target.value, 2)" displayFormat="h:mm A"></ion-datetime>
+    </ion-item> 
+
+</ion-col>
+<ion-col size="1">
+</ion-col>
+</ion-row>
+
+<ion-row *ngIf="!mostrar">
+  <ion-col size="1">
+  </ion-col>
+  <ion-col size="10" class="ion-text-center">
+    
+      <ion-button class="ion-text-center" (click)="guardar()">
+        Guardar
+      </ion-button>
+    
+</ion-col>
+<ion-col size="1">
+</ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="1">
+  </ion-col>
+  <ion-col size="10" class="ion-text-center">
+    
+      <ion-button class="ion-text-center" color="danger" (click)="dismiss()">
+        Cancelar
+      </ion-button>
+    
+</ion-col>
+<ion-col size="1">
+</ion-col>
+</ion-row>
+
+
+
+  
+
+
+</ion-content>
